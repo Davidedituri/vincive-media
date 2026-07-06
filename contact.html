@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Vincive Media</title>
+  <meta name="description" content="Book a free 30-minute strategy call. No strings attached — just a candid conversation about how we can help strengthen your brand." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="nav.css" />
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">Vincive</a>
+  <div class="nav-links" id="navMenu">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="cases.html">Our work</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta btn">Start a project</a>
+  </div>
+  <button class="hamburger" id="burger" aria-label="Toggle menu">
+    <span id="b1"></span><span id="b2"></span><span id="b3"></span>
+  </button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg">
+    <img src="https://framerusercontent.com/images/xgaTbTgZnkfnGJFBiNzlI2I4.jpg" alt="" />
+  </div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">
+      <div class="page-hero-line"></div>
+      <span class="page-hero-tag">Get in touch</span>
+    </div>
+    <h1>Let us look together<br><em>at your future</em></h1>
+    <p class="page-hero-desc">You're here because you're interested in strengthening your brand. With a free 30-minute analysis call, we'll discuss how we can improve your online presence and drive faster results.</p>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="section">
+  <div class="inner">
+    <div class="two-col" style="gap:100px">
+
+      <!-- Contact details -->
+      <div class="reveal">
+        <span class="label">Direct contact</span>
+        <h2 class="heading" style="margin-bottom:48px">Get in<br><em>Touch!</em></h2>
+
+        <div style="display:flex;flex-direction:column;gap:36px">
+          <div>
+            <p class="contact-item-label" style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px">Hotline</p>
+            <a href="tel:+32470098017" style="font-size:18px;color:var(--text-soft);transition:color .2s;display:block" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--text-soft)'">+32 470 09 80 17</a>
+          </div>
+          <div>
+            <p class="contact-item-label" style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px">Email</p>
+            <a href="mailto:info@vincive-media.com" style="font-size:18px;color:var(--text-soft);transition:color .2s;display:block" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--text-soft)'">info@vincive-media.com</a>
+          </div>
+          <div>
+            <p class="contact-item-label" style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px">Follow us</p>
+            <div style="display:flex;gap:10px;margin-top:4px">
+              <a href="https://www.instagram.com/vincive_media/" target="_blank" rel="noopener" class="social-chip">Instagram</a>
+              <a href="https://www.linkedin.com/company/vincive-media/" target="_blank" rel="noopener" class="social-chip">LinkedIn</a>
+            </div>
+          </div>
+          <div>
+            <p class="contact-item-label" style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px">Address</p>
+            <p style="font-size:15px;color:var(--text-muted);line-height:1.7">Grote baan 217<br>3530, Houthalen-Helchteren<br>Belgium</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="reveal reveal-d1">
+        <span class="label">Send a message</span>
+        <h2 class="heading" style="margin-bottom:36px">Book a<br><em>free call</em></h2>
+        <form id="contactForm" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="fname">First name</label>
+              <input class="form-input" type="text" id="fname" name="fname" placeholder="Davide" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lname">Last name</label>
+              <input class="form-input" type="text" id="lname" name="lname" placeholder="Di Turi" required />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="email">Email address</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="phone">Phone number</label>
+              <input class="form-input" type="tel" id="phone" name="phone" placeholder="+32 ..." />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="service">Service interested in</label>
+              <select class="form-select" id="service" name="service">
+                <option value="" disabled selected>Select a service</option>
+                <option>Content Creation</option>
+                <option>Social Media Enhancement</option>
+                <option>Paid Media</option>
+                <option>Photography & Videography</option>
+                <option>Multiple / Full Package</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="message">Your message</label>
+              <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your brand and what you're looking to achieve..."></textarea>
+            </div>
+            <div class="form-group full">
+              <button type="submit" class="btn btn-orange form-submit" style="width:100%;justify-content:center">Book a call →</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-cols">
+    <div>
+      <span class="footer-brand-logo">Vincive</span>
+      <p class="footer-brand-desc">Premium content creation and marketing for high-end real estate & hospitality brands.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/vincive_media/" target="_blank" rel="noopener" class="social-chip">Instagram</a>
+        <a href="https://www.linkedin.com/company/vincive-media/" target="_blank" rel="noopener" class="social-chip">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="cases.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Content creation</a></li>
+        <li><a href="services.html">Social media enhancement</a></li>
+        <li><a href="services.html">Paid media</a></li>
+        <li><a href="services.html">Photography & videography</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>BE0777.524.482 &nbsp;·&nbsp; © 2025 VINCIVE webdesign</p>
+    <div class="footer-legal">
+      <a href="#">Terms and conditions</a>
+      <a href="#">Privacy statement</a>
+      <a href="#">Service terms</a>
+      <a href="#">Cookie Settings</a>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

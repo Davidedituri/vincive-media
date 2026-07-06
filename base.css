@@ -1,0 +1,170 @@
+/* ═══════════════════════════════════════════
+   VINCIVE MEDIA — base.css
+   Shared tokens, reset, typography, utilities
+═══════════════════════════════════════════ */
+
+/* ─── GOOGLE FONTS ─── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+/* ─── DESIGN TOKENS ─── */
+:root {
+  /* Backgrounds */
+  --bg:         #131313;
+  --bg-card:    #1a1a1a;
+  --bg-section: #181818;
+
+  /* Text */
+  --white:       #ffffff;
+  --text-soft:   rgba(255,255,255,0.72);
+  --text-muted:  rgba(255,255,255,0.38);
+  --text-dim:    rgba(255,255,255,0.22);
+
+  /* Borders */
+  --border:      rgba(255,255,255,0.09);
+  --border-soft: rgba(255,255,255,0.06);
+
+  /* Brand Orange */
+  --orange:      #FF6B1A;
+  --orange-soft: rgba(255,107,26,0.15);
+  --orange-dim:  rgba(255,107,26,0.08);
+
+  /* Typography */
+  --sans:  'DM Sans', system-ui, sans-serif;
+  --serif: 'DM Serif Display', Georgia, serif;
+
+  /* Spacing */
+  --side:   52px;
+  --side-m: 24px;
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ─── TYPOGRAPHY UTILITIES ─── */
+.label {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 18px;
+}
+.label-muted {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 18px;
+}
+.heading {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(32px, 3.8vw, 54px);
+  line-height: 1.08;
+  color: var(--white);
+}
+.heading em { font-style: italic; }
+.heading-sm {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.1;
+  color: var(--white);
+}
+
+/* ─── LAYOUT ─── */
+.inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.section    { padding: 112px var(--side); }
+.section-md { padding:  80px var(--side); }
+.section-sm { padding:  56px var(--side); }
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  line-height: 1;
+  transition: all 0.22s;
+  white-space: nowrap;
+}
+.btn-orange {
+  background: var(--orange);
+  color: var(--white);
+}
+.btn-orange:hover { background: #ff7d34; }
+
+.btn-white {
+  background: var(--white);
+  color: var(--bg);
+}
+.btn-white:hover { background: #ebebeb; }
+
+.btn-outline-white {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.28);
+  color: var(--white);
+}
+.btn-outline-white:hover {
+  border-color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.04);
+}
+.btn-outline-orange {
+  background: transparent;
+  border: 1px solid var(--orange);
+  color: var(--orange);
+}
+.btn-outline-orange:hover { background: var(--orange-soft); }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 920px) {
+  :root {
+    --side: var(--side-m);
+  }
+  .section    { padding: 72px var(--side-m); }
+  .section-md { padding: 56px var(--side-m); }
+  .section-sm { padding: 40px var(--side-m); }
+}
