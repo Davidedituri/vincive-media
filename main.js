@@ -85,4 +85,53 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', tryPlay, { once: true });
   }
 
+  /* ---- work card video modal (YouTube / Vimeo) ---- */
+  function vinciveGetEmbedUrl(url){
+    // youtube-nocookie.com + modestbranding/rel/controls params keep this feeling
+    // like a native Vincive player instead of a YouTube page dropped on top of the site
+    let m = url.match(/(?:youtu\.be\/|youtube\.com\/watch\?v=|youtube\.com\/embed\/)([\w-]{11})/);
+    if (m) return `https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1`;
+    m = url.match(/vimeo\.com\/(\d+)/);
+    if (m) return `https://player.vimeo.com/video/${m[1]}?autoplay=1&byline=0&title=0&portrait=0&dnt=1`;
+    return null;
+  }
+
+  const videoCards = document.querySelectorAll('[data-video]');
+  const videoModal = document.getElementById('videoModal');
+  const videoModalFrame = document.getElementById('videoModalFrame');
+  const videoModalTitle = document.getElementById('videoModalTitle');
+
+  function openVideoModal(url, title){
+    const embed = vinciveGetEmbedUrl(url);
+    if (!embed || !videoModal || !videoModalFrame) return;
+    videoModalFrame.innerHTML = `<iframe src="${embed}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+    if (videoModalTitle) videoModalTitle.textContent = title || '';
+    videoModal.classList.add('is-open');
+    videoModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideoModal(){
+    if (!videoModal || !videoModalFrame) return;
+    videoModal.classList.remove('is-open');
+    videoModal.setAttribute('aria-hidden', 'true');
+    videoModalFrame.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  videoCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const titleEl = card.querySelector('h3');
+      openVideoModal(card.dataset.video, titleEl ? titleEl.textContent : '');
+    });
+  });
+
+  if (videoModal) {
+    videoModal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeVideoModal));
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeVideoModal();
+  });
+
 });
