@@ -8,7 +8,7 @@
 const VINCIVE_I18N = {
 
   /* ---- nav ---- */
-  "nav.home":        { en: "Home",    nl: "Home" },
+  "nav.home":        { en: "Homee",    nl: "Home" },
   "nav.work":         { en: "Work",    nl: "Werk" },
   "nav.approach":      { en: "Approach", nl: "Aanpak" },
   "nav.contact":        { en: "Contact",  nl: "Contact" },
