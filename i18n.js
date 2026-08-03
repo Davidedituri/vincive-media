@@ -8,7 +8,7 @@
 const VINCIVE_I18N = {
 
   /* ---- nav ---- */
-  "nav.home":        { en: "Homee",    nl: "Home" },
+  "nav.home":        { en: "Home",    nl: "Home" },
   "nav.work":         { en: "Work",    nl: "Werk" },
   "nav.approach":      { en: "Approach", nl: "Aanpak" },
   "nav.contact":        { en: "Contact",  nl: "Contact" },
@@ -84,12 +84,17 @@ const VINCIVE_I18N = {
 
   /* ---- featured work (home) ---- */
   "work.title":     { en: "Selected work.", nl: "Geselecteerd werk." },
-  "work.card.tag1":  { en: "Brand Campaign", nl: "Merkcampagne" },
+  "work.card.tag1":  { en: "Showreel", nl: "Showreel" },
   "work.card.tag2":   { en: "Content Series", nl: "Contentreeks" },
   "work.card.tag3":    { en: "Concept &amp; Strategy", nl: "Concept &amp; Strategie" },
-  "work.card.title":     { en: "Project placeholder — add your case", nl: "Projectplaceholder — voeg je case toe" },
+  "work.card.title":     { en: "Project placeholder — add your cas", nl: "Projectplaceholder — voeg je case toe" },
   "work.card.desc":        { en: "Swap this card for a real project: cover image, campaign name and a one-line result.",
                               nl: "Vervang deze kaart door een echt project: coverbeeld, campagnenaam en een resultaat in één zin." },
+
+  /* ---- clients / logo strip (home) ---- */
+  "clients.eyebrow": { en: "Collaborators", nl: "Samenwerkingen" },
+  "clients.heading":  { en: "We created with&hellip;", nl: "We creëerden met&hellip;" },
+  "clients.cta":       { en: "Ready to join the list?", nl: "Klaar om erbij te horen?" },
 
   /* ---- cta band (home) ---- */
   "cta.home.eyebrow": { en: "Let's Build Something", nl: "Laten we iets bouwen" },
@@ -120,20 +125,35 @@ const VINCIVE_I18N = {
   "filter.concept":       { en: "Concept",    nl: "Concept" },
   "filter.strategy":       { en: "Strategy",   nl: "Strategie" },
 
-  "case.1.tag":   { en: "Branding",            nl: "Branding" },
-  "case.1.title":  { en: "Case Study One",      nl: "Case Study Eén" },
-  "case.2.tag":     { en: "Campaign",            nl: "Campagne" },
-  "case.2.title":    { en: "Case Study Two",      nl: "Case Study Twee" },
-  "case.3.tag":       { en: "Content Series",      nl: "Contentreeks" },
-  "case.3.title":      { en: "Case Study Three",    nl: "Case Study Drie" },
-  "case.4.tag":         { en: "Concept",              nl: "Concept" },
-  "case.4.title":        { en: "Case Study Four",      nl: "Case Study Vier" },
-  "case.5.tag":           { en: "Brand Strategy",        nl: "Merkstrategie" },
-  "case.5.title":          { en: "Case Study Five",       nl: "Case Study Vijf" },
-  "case.6.tag":             { en: "Campaign · Content",     nl: "Campagne · Content" },
-  "case.6.title":            { en: "Case Study Six",         nl: "Case Study Zes" },
-  "case.desc":                { en: "Add project title, cover visual and a short line on the result. Replace this card in projects.html.",
-                                 nl: "Voeg projecttitel, coverbeeld en een korte lijn over het resultaat toe. Vervang deze kaart in projects.html." },
+  "case.1.tag":   { en: "16:9 · Showreel", nl: "16:9 · Showreel" },
+  "case.1.title":  { en: "Launch Film — Vincive Media", nl: "Launch Film — Vincive Media" },
+  "case.1.desc":    { en: "The film that launched Vincive Media itself — concept, shoot and edit, all under one roof.",
+                       nl: "De film die Vincive Media zelf lanceerde — concept, shoot en edit, allemaal onder één dak." },
+
+  "case.2.tag":   { en: "9:16 · Campaign", nl: "9:16 · Campagne" },
+  "case.2.title":  { en: "Peugeot Spain — Dealership Campaign", nl: "Peugeot Spain — Dealership Campaign" },
+  "case.2.desc":    { en: "A vertical campaign built to launch a Peugeot dealership in Murcia, Spain.",
+                       nl: "Een verticale campagne gebouwd om een Peugeot-dealer in Murcia, Spanje te lanceren." },
+
+  "case.3.tag":   { en: "16:9 · Promo", nl: "16:9 · Promo" },
+  "case.3.title":  { en: "Visit Limburg — Voerstreek", nl: "Visit Limburg — Voerstreek" },
+  "case.3.desc":    { en: "A tourism promo shot and edited to sell the Voerstreek region for Visit Limburg.",
+                       nl: "Een toeristische promo, gefilmd en gemonteerd om de Voerstreek te verkopen voor Visit Limburg." },
+
+  "case.4.tag":   { en: "9:16 · Reel", nl: "9:16 · Reel" },
+  "case.4.title":  { en: "Nexus Area V — Aftermovie", nl: "Nexus Area V — Aftermovie" },
+  "case.4.desc":    { en: "Aftermovie for the Nexus event at Area V, Hasselt — 2026.",
+                       nl: "Aftermovie voor het Nexus-event op Area V, Hasselt — 2026." },
+
+  "case.5.tag":   { en: "4K · Campaign Series", nl: "4K · Campagnereeks" },
+  "case.5.title":  { en: "Nieuwco — Systems Launch", nl: "Nieuwco — Systems Launch" },
+  "case.5.desc":    { en: "A color-graded highlight reel built around Nieuwco's system launch.",
+                       nl: "Een kleurgegradeerde highlightreel rond de systeemlancering van Nieuwco." },
+
+  "case.6.tag":   { en: "1:1 · Paid Social", nl: "1:1 · Betaalde Social" },
+  "case.6.title":  { en: "Ceder Real Estate — Growth Sprint", nl: "Ceder Real Estate — Growth Sprint" },
+  "case.6.desc":    { en: "A paid social lifestyle campaign built to drive qualified leads for Ceder Real Estate.",
+                       nl: "Een betaalde social lifestyle-campagne gebouwd om gekwalificeerde leads te genereren voor Ceder Real Estate." },
 
   "note.label": { en: "Editing note:", nl: "Bewerkingsnotitie:" },
   "note.text":   { en: "these six cards are placeholders. Open <code>projects.html</code>, replace the title, tag, description and <code>--card-a/b/c</code> colours (or swap the <code>.backdrop</code> for a real image) for each finished project.",
