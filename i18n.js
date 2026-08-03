@@ -13,36 +13,30 @@ const VINCIVE_I18N = {
   "nav.approach":      { en: "Approach", nl: "Aanpak" },
   "nav.contact":        { en: "Contact",  nl: "Contact" },
   "cta.startProject":     { en: "Start a Project", nl: "Start een Project" },
-  "cta.viewWork":          { en: "View the Work",  nl: "Bekijk het Werk" },
+  "cta.viewWork":          { en: "View my Work",  nl: "Bekijk mijn Werk" },
   "cta.allProjects":        { en: "All Projects",   nl: "Alle Projecten" },
   "cta.seeWork":              { en: "See the Work",   nl: "Bekijk het Werk" },
 
   /* ---- hero (home) ---- */
-  "hero.kicker":  { en: "Creative Direction Studio — Based Worldwide, Working Everywhere", nl: "Creative Direction Studio — Wereldwijd Actief" },
+  "hero.kicker":  { en: "Creative director based in Belgium, working everywhere", nl: "Creative director wereldwijd actief" },
   "hero.title":    { en: "Vision, in<br><em>physical</em> form.", nl: "Visie, in<br><em>fysieke</em> vorm." },
-  "hero.desc":      { en: "I'm Davide — creative director for brands who want to be seen. Marketing, concept thinking and content creation, under one roof, built around one idea done right.",
-                       nl: "Ik ben Davide — creative director voor merken die gezien willen worden. Marketing, concept thinking en content creation, onder één dak, gebouwd rond één idee dat klopt." },
+  "hero.desc":      { en: "I'm Davide, creative director for brands who want to be seen. Content creation with marketing under one roof, built around one idea done right.",
+                       nl: "Ik ben Davide, creative director voor merken die gezien willen worden. Content creation en marketing onder één dak, gebouwd rond één idee dat klopt." },
   "hero.scroll":     { en: "Scroll", nl: "Scroll" },
 
   /* ---- marquee ---- */
   "marquee.text": {
-    en: "Creative Direction <em>—</em> Concept Thinking <em>—</em> Content Creation <em>—</em> Brand Strategy <em>—</em> Campaign Development <em>—</em> Art Direction <em>—</em>",
-    nl: "Creative Direction <em>—</em> Concept Thinking <em>—</em> Content Creation <em>—</em> Merkstrategie <em>—</em> Campagneontwikkeling <em>—</em> Art Direction <em>—</em>"
+    en: "Creative direction <em>—</em> Concept thinking <em>—</em> Content creation <em>—</em> Brand strategy <em>—</em> Campaign development <em>—</em> Art direction <em>—</em>",
+    nl: "Creative direction <em>—</em> Concept thinking <em>—</em> Content creation <em>—</em> Merkstrategie <em>—</em> Campagneontwikkeling <em>—</em> Art direction <em>—</em>"
   },
 
   /* ---- intro / statement ---- */
-  "eyebrow.studio": { en: "The Studio", nl: "De Studio" },
+  "eyebrow.studio": { en: "The creativeo", nl: "De creative" },
   "intro.statement": {
-    en: 'Vincive Media is a creative partner — <span class="pop">not another vendor.</span> <span class="muted">I step in as your creative director:</span> shaping the marketing, sharpening the concept, and producing the content that puts your brand on the map. <span class="pop">Every project starts as an idea and ends as something you can see, feel and hold.</span>',
-    nl: 'Vincive Media is een creative partner — <span class="pop">geen zoveelste leverancier.</span> <span class="muted">Ik stap in als jouw creative director:</span> ik geef vorm aan de marketing, scherp het concept aan, en produceer de content die jouw merk op de kaart zet. <span class="pop">Elk project begint als een idee en eindigt als iets dat je kan zien, voelen en vasthouden.</span>'
+    en: 'Vincive Media is my alias as a creative partner<span class="pop">not another agency</span> <span class="muted">I step in as your creative director:</span> shaping the marketing, sharpening the concept, and producing the content that puts your brand on the map. <span class="pop">Every project starts as an idea and ends as something you can see, feel and hold.</span>',
+    nl: 'Vincive Media is mijn alias als creative partner<span class="pop">geen zoveelste reclamebureau</span> <span class="muted">Ik stap in als jouw creative director:</span> ik geef vorm aan de marketing, scherp het concept aan, en produceer de content die jouw merk op de kaart zet. <span class="pop">Elk project begint als een idee en eindigt als iets dat je kan zien, voelen en vasthouden.</span>'
   },
-  "intro.col1.title": { en: "Strategy meets craft", nl: "Strategie ontmoet vakmanschap" },
-  "intro.col1.desc":   { en: "Every deliverable is grounded in a clear strategic reason to exist — then built with the craft of a production studio, not a slide deck.",
-                          nl: "Elke deliverable staat op een duidelijke strategische reden om te bestaan — en wordt gebouwd met het vakmanschap van een productiestudio, niet van een slide deck." },
-  "intro.col2.title": { en: "One creative lead, full accountability", nl: "Eén creative lead, volledige verantwoordelijkheid" },
-  "intro.col2.desc":   { en: "No hand-offs, no diluted vision. You work directly with the person steering the concept from brief to final cut.",
-                          nl: "Geen overdrachten, geen verwaterde visie. Je werkt rechtstreeks met de persoon die het concept stuurt van brief tot eindresultaat." },
-
+  
   /* ---- services ---- */
   "services.title": { en: "What I bring to the table.", nl: "Wat ik meebreng." },
   "services.lead":   { en: "Six disciplines, one creative direction — deployed together or on their own, depending on what your brand needs right now.",
