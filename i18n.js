@@ -154,6 +154,11 @@ const VINCIVE_I18N = {
   "case.6.title":  { en: "Ceder Real Estate — Growth Sprint", nl: "Ceder Real Estate — Growth Sprint" },
   "case.6.desc":    { en: "A paid social lifestyle campaign built to drive qualified leads for Ceder Real Estate.",
                        nl: "Een betaalde social lifestyle-campagne gebouwd om gekwalificeerde leads te genereren voor Ceder Real Estate." },
+   
+   "case.7.tag":   { en: "16:9 · Promo", nl: "16:9 · Promo" },
+  "case.7.title":  { en: "Hogeschool UCLL — Internationalisering", nl: "Hogeschool UCLL — Internationalisering" },
+  "case.7.desc":    { en: "A promo film for Hogeschool UCLL built to showcase its international student experience.",
+                       nl: "Een promofilm voor Hogeschool UCLL die de internationale studentenervaring in de kijker zet." },
 
   "note.label": { en: "Editing note:", nl: "Bewerkingsnotitie:" },
   "note.text":   { en: "these six cards are placeholders. Open <code>projects.html</code>, replace the title, tag, description and <code>--card-a/b/c</code> colours (or swap the <code>.backdrop</code> for a real image) for each finished project.",
