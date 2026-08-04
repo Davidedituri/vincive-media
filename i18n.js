@@ -40,13 +40,13 @@ const VINCIVE_I18N = {
    /* ---- about ---- */
  "about.eyebrow": { en: "The Person Behind It", nl: "De Persoon Erachter" },
  "about.quote": {
-   en: "&ldquo;Vision, in physical form — that&#39;s not a tagline, it&#39;s how I work.&rdquo;",
-   nl: "&ldquo;Visie, in fysieke vorm — dat is geen slogan, zo werk ik.&rdquo;"
+   en: "&ldquo;Vision, in physical form that&#39;s not a tagline, it&#39;s how I work.&rdquo;",
+   nl: "&ldquo;Visie, in fysieke vorm dat is geen slogan, zo werk ik.&rdquo;"
  },
  "about.heading": { en: "Hi, I&#39;m Davide Di Turi.", nl: "Hoi, ik ben Davide Di Turi." },
  "about.p1": {
-   en: "Creative, marketer, content creator and videographer — all in one person. I&#39;m the strategy, the camera and the edit behind Vincive Media, with no hand-offs and no briefs lost in translation between departments.",
-   nl: "Creative, marketeer, content creator en videograaf — allemaal in één persoon. Ik ben de strategie, de camera en de edit achter Vincive Media, zonder overdrachten en zonder briefings die verloren gaan tussen afdelingen."
+   en: "Creative, marketer, content creator and videographer all in one person. I&#39;m the strategy, the camera and the edit behind Vincive Media, with no hand-offs and no briefs lost in translation between departments.",
+   nl: "Creative, marketeer, content creator en videograaf allemaal in één persoon. Ik ben de strategie, de camera en de edit achter Vincive Media, zonder overdrachten en zonder briefings die verloren gaan tussen afdelingen."
  },
  "about.p2": {
    en: "I think in funnels and positioning by day, and chase the shot that makes a scroll stop by night — often the same day. Vincive Media exists because that combination is rare, and brands need both to actually get seen.",
