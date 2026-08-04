@@ -108,7 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (videoModalTitle) videoModalTitle.textContent = title || '';
     videoModal.classList.add('is-open');
     videoModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    // lock scroll via <html>, not <body> -- Safari has a long-standing bug where
+    // setting overflow:hidden on body while the page is scrolled re-anchors any
+    // position:fixed descendant (including this modal) to the body's scroll
+    // offset instead of the viewport, so it opens off-screen above the fold
+    document.documentElement.style.overflow = 'hidden';
   }
 
   function closeVideoModal(){
@@ -116,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     videoModal.classList.remove('is-open');
     videoModal.setAttribute('aria-hidden', 'true');
     videoModalFrame.innerHTML = '';
-    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 
   videoCards.forEach(card => {
