@@ -36,6 +36,31 @@ const VINCIVE_I18N = {
    en: 'Vincive Media is my alias as a creative partner<span class="pop"> not another agency</span> <span class="muted">I step in as your creative director:</span> shaping the marketing, sharpening the concept, and producing the content that puts your brand on the map. <span class="pop">Every project starts as an idea and ends as something you can see, feel and hold.</span>',
    nl: 'Vincive Media is mijn alias als creative partner<span class="pop"> geen zoveelste reclamebureau</span> <span class="muted">Ik stap in als jouw creative director:</span> ik geef vorm aan de marketing, scherp het concept aan, en produceer de content die jouw merk op de kaart zet. <span class="pop">Elk project begint als een idee en eindigt als iets dat je kan zien, voelen en vasthouden.</span>'
  },
+
+   /* ---- about ---- */
+ "about.eyebrow": { en: "The Person Behind It", nl: "De Persoon Erachter" },
+ "about.quote": {
+   en: "&ldquo;Vision, in physical form — that&#39;s not a tagline, it&#39;s how I work.&rdquo;",
+   nl: "&ldquo;Visie, in fysieke vorm — dat is geen slogan, zo werk ik.&rdquo;"
+ },
+ "about.heading": { en: "Hi, I&#39;m Davide Di Turi.", nl: "Hoi, ik ben Davide Di Turi." },
+ "about.p1": {
+   en: "Creative, marketer, content creator and videographer — all in one person. I&#39;m the strategy, the camera and the edit behind Vincive Media, with no hand-offs and no briefs lost in translation between departments.",
+   nl: "Creative, marketeer, content creator en videograaf — allemaal in één persoon. Ik ben de strategie, de camera en de edit achter Vincive Media, zonder overdrachten en zonder briefings die verloren gaan tussen afdelingen."
+ },
+ "about.p2": {
+   en: "I think in funnels and positioning by day, and chase the shot that makes a scroll stop by night — often the same day. Vincive Media exists because that combination is rare, and brands need both to actually get seen.",
+   nl: "Overdag denk ik in funnels en positionering, &#39;s avonds jaag ik op het shot dat een scroll doet stoppen — vaak dezelfde dag. Vincive Media bestaat omdat die combinatie zeldzaam is, en merken allebei nodig hebben om echt gezien te worden."
+ },
+ "about.p3": {
+   en: "Every project I take on runs through the same hands: brief, shoot, edit, grade, launch, measure. That&#39;s not a limitation — it&#39;s the whole point.",
+   nl: "Elk project dat ik aanneem loopt door dezelfde handen: briefing, shoot, edit, grade, lancering, meting. Dat is geen beperking — dat is precies het punt."
+ },
+ "about.tag1": { en: "Creative Direction", nl: "Creative Direction" },
+ "about.tag2": { en: "Concept Thinking", nl: "Concept Thinking" },
+ "about.tag3": { en: "Content Creation", nl: "Content Creation" },
+ "about.tag4": { en: "Brand Strategy", nl: "Merkstrategie" },
+
   /* ---- services ---- */
   "services.title": { en: "What I bring to the table.", nl: "Wat ik te bieden heb." },
   "services.lead":   { en: "Six disciplines, deployed together or on their own, depending on what your brand needs right now.",
