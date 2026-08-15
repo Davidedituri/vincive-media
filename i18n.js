@@ -43,18 +43,18 @@ const VINCIVE_I18N = {
    en: "&ldquo;Vision, in physical form that&#39;s not a tagline, it&#39;s how I work.&rdquo;",
    nl: "&ldquo;Visie, in fysieke vorm dat is geen slogan, zo werk ik.&rdquo;"
  },
- "about.heading": { en: "Hi, I&#39;m Davide Di Turi.", nl: "Hoi, ik ben Davide Di Turi." },
+ "about.heading": { en: "Hi, I&#39;m Davide Di Turi.", nl: "Hey, ik ben Davide Di Turi." },
  "about.p1": {
    en: "Creative, marketer, content creator and videographer all in one person. I&#39;m the strategy, the camera and the edit behind Vincive Media, with no hand-offs and no briefs lost in translation between departments.",
    nl: "Creative, marketeer, content creator en videograaf allemaal in één persoon. Ik ben de strategie, de camera en de edit achter Vincive Media, zonder overdrachten en zonder briefings die verloren gaan tussen afdelingen."
  },
  "about.p2": {
-   en: "I think in funnels and positioning by day, and chase the shot that makes a scroll stop by night — often the same day. Vincive Media exists because that combination is rare, and brands need both to actually get seen.",
-   nl: "Overdag denk ik in funnels en positionering, &#39;s avonds jaag ik op het shot dat een scroll doet stoppen — vaak dezelfde dag. Vincive Media bestaat omdat die combinatie zeldzaam is, en merken allebei nodig hebben om echt gezien te worden."
+   en: "I think in funnels and positioning by day, and chase the shot that makes a scroll stop by night often the same day. Vincive Media exists because that combination is rare, and brands need both to actually get seen.",
+   nl: "Overdag denk ik in funnels en positionering, &#39;s avonds jaag ik op het shot dat een scroll doet stoppen vaak dezelfde dag. Vincive Media bestaat omdat die combinatie zeldzaam is, en merken allebei nodig hebben om echt gezien te worden."
  },
  "about.p3": {
-   en: "Every project I take on runs through the same hands: brief, shoot, edit, grade, launch, measure. That&#39;s not a limitation — it&#39;s the whole point.",
-   nl: "Elk project dat ik aanneem loopt door dezelfde handen: briefing, shoot, edit, grade, lancering, meting. Dat is geen beperking — dat is precies het punt."
+   en: "Every project I take on runs through the same hands: brief, shoot, edit, grade, launch, measure. 
+   nl: "Elk project dat ik aanneem loopt door dezelfde handen: briefing, shoot, edit, grade, lancering, meting. 
  },
  "about.tag1": { en: "Creative Direction", nl: "Creative Direction" },
  "about.tag2": { en: "Concept Thinking", nl: "Concept Thinking" },
