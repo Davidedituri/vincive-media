@@ -507,7 +507,8 @@ body.switching .i18n-fade{opacity:0}
 /* =========================================================
    SETTINGS · edit these
    ========================================================= */
-const EMAIL = "info@vincive-media.com";   // your inbox
+const EMAIL = "info@vincive-media.com";
+const FORM_TO = "info.davidedituri@gmail.com";   // where form requests arrive   // your inbox
 const BOOKING_URL = "https://calendly.com/vincive-media-info/30min";
 
 /* Projects: add, remove or reorder. src: "yt" (YouTube), "vimeo" or "file" (a video in this folder) */
@@ -723,7 +724,7 @@ cform.addEventListener("submit",async e=>{
   const label=t.f_topics.find(x=>x[0]===topic)[1];
   const btn=document.getElementById("f_send"); btn.disabled=true; fstatus.className="f-status"; fstatus.textContent=t.f_sending;
   try{
-    const r=await fetch("https://formsubmit.co/ajax/"+EMAIL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+    const r=await fetch("https://formsubmit.co/ajax/"+FORM_TO,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
       body:JSON.stringify({
         _subject:`[${TOPIC_TAG[topic]}] Nieuwe aanvraag van ${name}${company?" ("+company+")":""}`,
         _template:"table", _captcha:"false", _replyto:email,
@@ -734,7 +735,7 @@ cform.addEventListener("submit",async e=>{
     if(!r.ok||String(d.success)!=="true") throw new Error(d.message||"send failed");
     cform.classList.add("sent"); cform.reset();
   }catch(err){
-    fstatus.className="f-status err"; fstatus.textContent=t.f_err_send; btn.disabled=false;
+    fstatus.className="f-status err"; fstatus.textContent=t.f_err_send+(err&&err.message&&err.message!=="send failed"?" ("+err.message+")":""); btn.disabled=false;
   }
 });
 
@@ -770,7 +771,7 @@ function closeModal(){modal.classList.remove("open");box.innerHTML="";lenis&&len
 document.getElementById("close").onclick=closeModal;
 modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
-document.getElementById("reelBtn").addEventListener("click",()=>openModal(projects[projects.length-1]));
+document.getElementById("reelBtn").addEventListener("click",()=>openModal(projects.find(p=>p.id==="Z30029qzMrI")));
 
 /* =========================================================
    Motion
