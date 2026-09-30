@@ -592,6 +592,7 @@ document.querySelectorAll(".rph video").forEach(v=>vio.observe(v));
 <script>
 /* ============ SETTINGS ============ */
 const EMAIL = "info@vincive-media.com";
+const FORM_TO = "info.davidedituri@gmail.com";   // where form requests arrive
 const BOOKING_URL = "https://calendly.com/vincive-media-info/30min";
 const VILLA_ID = "1Thzbjce7pc";    // YouTube ID of the hero film
 
@@ -873,13 +874,13 @@ $("cform").addEventListener("submit",async e=>{
   if($("f_honey").value) return;
   const btn=$("f_send"); btn.disabled=true; st.className="f-status"; st.textContent=t.fm_sending;
   try{
-    const r=await fetch("https://formsubmit.co/ajax/"+EMAIL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+    const r=await fetch("https://formsubmit.co/ajax/"+FORM_TO,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
       body:JSON.stringify({_subject:`[VASTGOED · ${topic}] Nieuwe aanvraag van ${name}${company?" ("+company+")":""}`,_template:"table",_captcha:"false",_replyto:email,
         Pakket:topic, Naam:name, Kantoor:company||"-", "E-mail":email, Telefoon:phone||"-", Locatie:where||"-", Bericht:msg, Taal:lang.toUpperCase(), Pagina:location.pathname})});
     const d=await r.json().catch(()=>({}));
     if(!r.ok||String(d.success)!=="true") throw new Error(d.message||"send failed");
     $("cform").classList.add("sent"); $("cform").reset();
-  }catch(err){ st.className="f-status err"; st.textContent=t.fm_err_send; btn.disabled=false; }
+  }catch(err){ st.className="f-status err"; st.textContent=t.fm_err_send+(err&&err.message&&err.message!=="send failed"?" ("+err.message+")":""); btn.disabled=false; }
 });
 
 render();
