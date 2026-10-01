@@ -573,6 +573,8 @@ document.querySelectorAll(".rph video").forEach(v=>vio.observe(v));
 
 <footer class="mono">
   <span>© <span id="yr"></span> Vincive Media · Davide Di Turi</span>
+  <a href="tel:+32470098017">+32 470 09 80 17</a>
+  <span><span data-i18n="vat">Company no.</span> BE0777.524.482</span>
   <span>Belgium · Costa Blanca</span>
   <a href="#top" data-i18n="top">Back to top ↑</a>
 </footer>
@@ -593,6 +595,8 @@ document.querySelectorAll(".rph video").forEach(v=>vio.observe(v));
 /* ============ SETTINGS ============ */
 const EMAIL = "info@vincive-media.com";
 const FORM_TO = "info.davidedituri@gmail.com";   // where form requests arrive
+// Google Sheet + Gmail form (see _niet-uploaden/formulier-google-script.gs). Paste the Web app URL here:
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwuziDZbJPuprhFHEbwXgm6bVloyt4iSBLJtRZ7Ss1MJlIp7oxGJtM4S5F-pgyBxmNa/exec";
 const BOOKING_URL = "https://calendly.com/vincive-media-info/30min";
 const VILLA_ID = "1Thzbjce7pc";    // YouTube ID of the hero film
 
@@ -693,7 +697,7 @@ en:{
  fm_err_topic:"Pick a package, or choose 'Not sure yet'.", fm_err_fields:"Fill in your name, a valid email and a short message.", fm_sending:"Sending…", fm_err_send:"That didn't go through. Try again, or mail info@vincive-media.com directly.",
  fm_done_k:"Request sent", fm_done_h:"Thanks! Your request is in.", fm_done_p:"I'll get back to you within one working day with a first plan for your listing.",
  ct_btn:"Book a call", ct_mail:"Send an email", ct_site:"Full portfolio →", mail_subject:"Listing media · Vincive Media",
- top:"Back to top ↑", close:"Close ✕"
+ top:"Back to top ↑", close:"Close ✕", vat:"Company no.", fm_mailapp:"Send it with your own mail app →"
 },
 nl:{
  title:"Vastgoedmedia · Vincive Media", away:"Waar ga je naartoe? 🤔", back:"Welkom terug 👋",
@@ -775,7 +779,7 @@ nl:{
  fm_err_topic:"Kies een pakket, of 'Nog niet zeker'.", fm_err_fields:"Vul je naam, een geldig e-mailadres en een kort bericht in.", fm_sending:"Bezig met versturen…", fm_err_send:"Dat lukte niet. Probeer opnieuw, of mail rechtstreeks naar info@vincive-media.com.",
  fm_done_k:"Aanvraag verstuurd", fm_done_h:"Bedankt! Je aanvraag is binnen.", fm_done_p:"Ik laat binnen één werkdag iets weten met een eerste plan voor je woning.",
  ct_btn:"Plan een gesprek", ct_mail:"Stuur een mail", ct_site:"Volledig portfolio →", mail_subject:"Vastgoedmedia · Vincive Media",
- top:"Naar boven ↑", close:"Sluiten ✕"
+ top:"Naar boven ↑", close:"Sluiten ✕", vat:"Ondernemingsnr.", fm_mailapp:"Verstuur het via je eigen mailapp →"
 }};
 
 /* ============ RENDER ============ */
@@ -874,13 +878,24 @@ $("cform").addEventListener("submit",async e=>{
   if($("f_honey").value) return;
   const btn=$("f_send"); btn.disabled=true; st.className="f-status"; st.textContent=t.fm_sending;
   try{
+    if(FORM_ENDPOINT){ try{
+      const r0=await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({
+        subject:`[VASTGOED · ${topic}] Nieuwe aanvraag van ${name}${company?" ("+company+")":""}`,
+        topic:"Vastgoed · "+topic, name, company, email, phone, budget:"-", message:(where?"Locatie: "+where+"\n\n":"")+msg, lang, page:location.pathname})});
+      const d0=await r0.json();
+      if(d0.ok){ $("cform").classList.add("sent"); $("cform").reset(); return; }
+    }catch(_){ /* falls through to FormSubmit, then mailto */ } }
     const r=await fetch("https://formsubmit.co/ajax/"+FORM_TO,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
       body:JSON.stringify({_subject:`[VASTGOED · ${topic}] Nieuwe aanvraag van ${name}${company?" ("+company+")":""}`,_template:"table",_captcha:"false",_replyto:email,
         Pakket:topic, Naam:name, Kantoor:company||"-", "E-mail":email, Telefoon:phone||"-", Locatie:where||"-", Bericht:msg, Taal:lang.toUpperCase(), Pagina:location.pathname})});
     const d=await r.json().catch(()=>({}));
     if(!r.ok||String(d.success)!=="true") throw new Error(d.message||"send failed");
     $("cform").classList.add("sent"); $("cform").reset();
-  }catch(err){ st.className="f-status err"; st.textContent=t.fm_err_send+(err&&err.message&&err.message!=="send failed"?" ("+err.message+")":""); btn.disabled=false; }
+  }catch(err){
+    const body=`Pakket: ${topic}\nNaam: ${name}\nKantoor: ${company||"-"}\nE-mail: ${email}\nTelefoon: ${phone||"-"}\nLocatie: ${where||"-"}\n\n${msg}`;
+    const a=document.createElement("a"); a.href=`mailto:${EMAIL}?subject=${encodeURIComponent("[VASTGOED · "+topic+"] Aanvraag van "+name)}&body=${encodeURIComponent(body)}`;
+    a.textContent=t.fm_mailapp; a.style.borderBottom="1px solid currentColor";
+    st.className="f-status err"; st.textContent=t.fm_err_send+" "; st.appendChild(a); btn.disabled=false; }
 });
 
 render();
