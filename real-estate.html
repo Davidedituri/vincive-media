@@ -330,6 +330,7 @@ document.querySelectorAll(".rph video").forEach(v=>vio.observe(v));
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.hero-foot{opacity:1;transform:none}.hero h1 .ln>span{transform:none}}
 @media(max-width:760px){.hero{padding-bottom:92px!important}.hero .loc,.rec-r{display:none}.theme{bottom:14px;padding:6px 8px 6px 10px}.theme .track{width:40px;height:22px}.theme .knob{width:16px;height:16px}:root[data-theme="peach"] .theme .knob{transform:translateX(18px)}}
 </style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="abdc12c1-7bc7-4eb7-ad31-0fcd099ae857" data-domains="vincive-media.com,www.vincive-media.com"></script>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
@@ -883,14 +884,14 @@ $("cform").addEventListener("submit",async e=>{
         subject:`[VASTGOED · ${topic}] Nieuwe aanvraag van ${name}${company?" ("+company+")":""}`,
         topic:"Vastgoed · "+topic, name, company, email, phone, budget:"-", message:(where?"Locatie: "+where+"\n\n":"")+msg, lang, page:location.pathname})});
       const d0=await r0.json();
-      if(d0.ok){ $("cform").classList.add("sent"); $("cform").reset(); return; }
+      if(d0.ok){ trk("Formulier verstuurd",{pakket:topic}); $("cform").classList.add("sent"); $("cform").reset(); return; }
     }catch(_){ /* falls through to FormSubmit, then mailto */ } }
     const r=await fetch("https://formsubmit.co/ajax/"+FORM_TO,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
       body:JSON.stringify({_subject:`[VASTGOED · ${topic}] Nieuwe aanvraag van ${name}${company?" ("+company+")":""}`,_template:"table",_captcha:"false",_replyto:email,
         Pakket:topic, Naam:name, Kantoor:company||"-", "E-mail":email, Telefoon:phone||"-", Locatie:where||"-", Bericht:msg, Taal:lang.toUpperCase(), Pagina:location.pathname})});
     const d=await r.json().catch(()=>({}));
     if(!r.ok||String(d.success)!=="true") throw new Error(d.message||"send failed");
-    $("cform").classList.add("sent"); $("cform").reset();
+    trk("Formulier verstuurd",{pakket:topic}); $("cform").classList.add("sent"); $("cform").reset();
   }catch(err){
     const body=`Pakket: ${topic}\nNaam: ${name}\nKantoor: ${company||"-"}\nE-mail: ${email}\nTelefoon: ${phone||"-"}\nLocatie: ${where||"-"}\n\n${msg}`;
     const a=document.createElement("a"); a.href=`mailto:${EMAIL}?subject=${encodeURIComponent("[VASTGOED · "+topic+"] Aanvraag van "+name)}&body=${encodeURIComponent(body)}`;
@@ -899,6 +900,20 @@ $("cform").addEventListener("submit",async e=>{
 });
 
 render();
+</script>
+<script>
+/* ---------- Umami stats (cookieless) ---------- */
+window.trk=(n,d)=>{try{window.umami&&umami.track(n,d)}catch(_){}};
+document.addEventListener("click",e=>{
+  const a=e.target.closest&&e.target.closest("a"); if(!a) return; const h=a.getAttribute("href")||"";
+  if(h.startsWith("tel:")) trk("Telefoon klik");
+  else if(h.startsWith("mailto:")) trk("Mail klik");
+  else if(h.includes("calendly.com")) trk("Calendly klik");
+  else if(h.includes("instagram.com")) trk("Instagram klik");
+  else if(h.includes("linkedin.com")) trk("LinkedIn klik");
+  else if(h.includes("real-estate")) trk("Naar vastgoedpagina");
+},true);
+window.addEventListener("message",e=>{ if(e.origin.includes("calendly.com")&&e.data&&e.data.event==="calendly.event_scheduled") trk("Call geboekt via Calendly"); });
 </script>
 </body>
 </html>
