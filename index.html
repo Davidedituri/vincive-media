@@ -275,6 +275,33 @@ section{padding:clamp(90px,13vw,180px) var(--pad)}
 .f-done b{font-size:clamp(24px,2.4vw,32px);font-weight:500}
 @media(max-width:900px){.contact{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}}
 
+/* ---------- shorts ---------- */
+.sh-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,28px);max-width:1100px;margin:0 auto}
+.sh{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:var(--bg2);border:1px solid var(--line);cursor:pointer;transform:translateZ(0);transition:transform .8s var(--ease),border-color .4s}
+.sh:nth-child(2){margin-top:clamp(20px,5vw,70px)}
+.sh img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.sh:hover img{transform:scale(1.04)}
+.sh:hover{border-color:var(--accent)}
+.sh-yt{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .8s}
+.sh.live .sh-yt{opacity:1}
+.sh-yt iframe{position:absolute;top:50%;left:50%;width:100%;height:100%;transform:translate(-50%,-50%) scale(1.18);border:0}
+.sh::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72),transparent 45%);pointer-events:none}
+.sh-cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:#fff;display:grid;gap:4px}
+.sh-cap b{font-size:clamp(14px,1.3vw,18px);font-weight:500;line-height:1.25}
+.sh-cap .mono{opacity:.75;font-size:11px}
+.sh-play{position:absolute;top:14px;right:14px;z-index:2;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);color:#fff;font-size:13px;border:1px solid rgba(255,255,255,.25)}
+@media(max-width:700px){.sh-row{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin:0 calc(var(--pad)*-1);padding-inline:var(--pad);scrollbar-width:none}.sh{scroll-snap-align:center}.sh:nth-child(2){margin-top:0}}
+.modal.vertical video{max-height:88vh;width:auto;max-width:92vw;aspect-ratio:9/16}
+
+/* ---------- calendly ---------- */
+.c-cal{grid-column:1/-1;border:1px solid var(--line);border-radius:22px;background:var(--bg2);padding:clamp(20px,3vw,36px);display:grid;gap:20px}
+.c-cal-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.c-cal-head h3{font-size:clamp(20px,2vw,28px);font-weight:500;margin-top:8px}
+.c-cal-frame{min-height:680px;border-radius:14px;overflow:hidden;display:grid;place-items:center;background:#fff}
+.c-cal-frame .calendly-inline-widget{width:100%;height:680px}
+.c-cal-frame>.mono{color:#777}
+.f-status a{color:var(--fg);border-bottom:1px solid var(--accent)}
+
 footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:28px var(--pad);border-top:1px solid var(--line)}
 footer a:hover{color:var(--fg)}
 
@@ -397,6 +424,15 @@ body.switching .i18n-fade{opacity:0}
   <div class="grid" id="grid"></div>
 </section>
 
+<section class="shorts" id="shorts">
+  <div class="label mono"><span data-i18n="l_shorts">Shorts &amp; reels</span><span>9:16</span></div>
+  <div class="head">
+    <h2 class="big rv" data-i18n="sh_h">Made for the<br><span class="serif">scroll</span></h2>
+    <p class="mono rv" data-i18n="sh_hint">Tap to watch with sound</p>
+  </div>
+  <div class="sh-row" id="shRow"></div>
+</section>
+
 <section id="industries" style="padding-top:0">
   <div class="label mono"><span data-i18n="l_ind">04 · Who I work with</span><span data-i18n="l_ind_r">Industries</span></div>
   <ul class="ind" id="ind"></ul>
@@ -482,10 +518,23 @@ body.switching .i18n-fade{opacity:0}
       <a class="btn solid" href="https://calendly.com/vincive-media-info/30min" target="_blank" rel="noopener" data-i18n="c_book">Book a call</a>
     </div>
   </form>
+
+  <div class="c-cal rv" id="ccal">
+    <div class="c-cal-head">
+      <div>
+        <span class="mono" data-i18n="cal_k">Rather talk?</span>
+        <h3 data-i18n="cal_h">Pick a moment for a free 30-minute call</h3>
+      </div>
+      <a class="btn" href="https://calendly.com/vincive-media-info/30min" target="_blank" rel="noopener" data-i18n="cal_open">Open in Calendly ↗</a>
+    </div>
+    <div class="c-cal-frame" id="calFrame"><span class="mono" data-i18n="cal_load">Loading calendar…</span></div>
+  </div>
 </section>
 
 <footer class="mono">
   <span>© <span id="yr"></span> Vincive Media · Davide Di Turi</span>
+  <a href="tel:+32470098017">+32 470 09 80 17</a>
+  <span><span data-i18n="vat">Company no.</span> BE0777.524.482</span>
   <span>Limburg, Belgium</span>
   <a href="#top" data-i18n="top">Back to top ↑</a>
 </footer>
@@ -509,6 +558,8 @@ body.switching .i18n-fade{opacity:0}
    ========================================================= */
 const EMAIL = "info@vincive-media.com";
 const FORM_TO = "info.davidedituri@gmail.com";   // where form requests arrive   // your inbox
+// Google Sheet + Gmail form (see _niet-uploaden/formulier-google-script.gs). Paste the Web app URL here:
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwuziDZbJPuprhFHEbwXgm6bVloyt4iSBLJtRZ7Ss1MJlIp7oxGJtM4S5F-pgyBxmNa/exec";
 const BOOKING_URL = "https://calendly.com/vincive-media-info/30min";
 
 /* Projects: add, remove or reorder. src: "yt" (YouTube), "vimeo" or "file" (a video in this folder) */
@@ -581,7 +632,7 @@ en:{
   f_err_topic:"Pick what your project is about.", f_err_fields:"Fill in your name, a valid email and a short message.",
   f_sending:"Sending…", f_err_send:"That didn't go through. Try again, or mail info@vincive-media.com directly.",
   f_done_k:"Message sent", f_done_h:"Thanks! Your message is in.", f_done_p:"I'll get back to you within one working day. In a hurry? Book a call right away.",
-  top:"Back to top ↑", close:"Close ✕",
+  top:"Back to top ↑", vat:"Company no.", l_shorts:"Shorts &amp; reels", sh_h:'Made for the<br><span class="serif">scroll</span>', sh_hint:"Tap to watch with sound", cal_k:"Rather talk?", cal_h:"Pick a moment for a free 30-minute call", cal_open:"Open in Calendly ↗", cal_load:"Loading calendar…", f_mailapp:"Send it with your own mail app →", close:"Close ✕",
   ph1:"Real estate", ph2:"Behind the scenes", ph3:"Personal brand",
   l_feed:"Built for the feed", l_feed_r:"Short-form",
   feed_h:'Content people<br><span class="serif">stop scrolling for.</span>',
@@ -640,7 +691,7 @@ nl:{
   f_err_topic:"Kies waarover je project gaat.", f_err_fields:"Vul je naam, een geldig e-mailadres en een kort bericht in.",
   f_sending:"Bezig met versturen…", f_err_send:"Dat lukte niet. Probeer opnieuw, of mail rechtstreeks naar info@vincive-media.com.",
   f_done_k:"Bericht verstuurd", f_done_h:"Bedankt! Je bericht is binnen.", f_done_p:"Ik laat binnen één werkdag iets weten. Haast? Plan meteen een gesprek.",
-  top:"Naar boven ↑", close:"Sluiten ✕",
+  top:"Naar boven ↑", vat:"Ondernemingsnr.", l_shorts:"Shorts &amp; reels", sh_h:'Gemaakt voor de<br><span class="serif">scroll</span>', sh_hint:"Tik om te kijken met geluid", cal_k:"Liever bellen?", cal_h:"Kies een moment voor een gratis gesprek van 30 minuten", cal_open:"Open in Calendly ↗", cal_load:"Agenda laden…", f_mailapp:"Verstuur het via je eigen mailapp →", close:"Sluiten ✕",
   ph1:"Vastgoed", ph2:"Achter de schermen", ph3:"Personal brand",
   l_feed:"Gemaakt voor de feed", l_feed_r:"Short-form",
   feed_h:'Content waar mensen<br><span class="serif">voor stoppen met scrollen.</span>',
@@ -724,6 +775,13 @@ cform.addEventListener("submit",async e=>{
   const label=t.f_topics.find(x=>x[0]===topic)[1];
   const btn=document.getElementById("f_send"); btn.disabled=true; fstatus.className="f-status"; fstatus.textContent=t.f_sending;
   try{
+    if(FORM_ENDPOINT){ try{
+      const r0=await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({
+        subject:`[${TOPIC_TAG[topic]}] Nieuwe aanvraag van ${name}${company?" ("+company+")":""}`,
+        topic:label, name, company, email, phone, budget, message:msg, lang, page:location.pathname})});
+      const d0=await r0.json();
+      if(d0.ok){ cform.classList.add("sent"); cform.reset(); return; }
+    }catch(_){ /* falls through to FormSubmit, then mailto */ } }
     const r=await fetch("https://formsubmit.co/ajax/"+FORM_TO,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
       body:JSON.stringify({
         _subject:`[${TOPIC_TAG[topic]}] Nieuwe aanvraag van ${name}${company?" ("+company+")":""}`,
@@ -735,7 +793,12 @@ cform.addEventListener("submit",async e=>{
     if(!r.ok||String(d.success)!=="true") throw new Error(d.message||"send failed");
     cform.classList.add("sent"); cform.reset();
   }catch(err){
-    fstatus.className="f-status err"; fstatus.textContent=t.f_err_send+(err&&err.message&&err.message!=="send failed"?" ("+err.message+")":""); btn.disabled=false;
+    const subj=`[${TOPIC_TAG[topic]}] Aanvraag van ${name}${company?" ("+company+")":""}`;
+    const body=`Onderwerp: ${label}\nNaam: ${name}\nBedrijf: ${company||"-"}\nE-mail: ${email}\nTelefoon: ${phone||"-"}\nBudget: ${budget}\n\n${msg}`;
+    const mt=`mailto:${EMAIL}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+    fstatus.className="f-status err"; fstatus.textContent=t.f_err_send+" ";
+    const a=document.createElement("a"); a.href=mt; a.textContent=t.f_mailapp; fstatus.appendChild(a);
+    btn.disabled=false;
   }
 });
 
@@ -771,6 +834,40 @@ function closeModal(){modal.classList.remove("open");box.innerHTML="";lenis&&len
 document.getElementById("close").onclick=closeModal;
 modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+/* ---------- shorts (YouTube) ----------
+   Cards play muted on a loop when in view (no controls), tap = full video with sound. */
+const shorts=[
+  {id:"WvbrBzflCvg", t:"Recap · Core LA 2026", tag:"Tomorrowland"},
+  {id:"6B4mSBRmngk", t:"SOLOVIDA x TML Academy · Network event", tag:"Event reel"},
+  {id:"FRllJis9LkI", t:"Meta glasses · Tomorrowland Winter 2026", tag:"POV reel"},
+];
+(function(){
+  const row=document.getElementById("shRow");
+  row.innerHTML=shorts.map((s,i)=>`<div class="sh rv" data-i="${i}" role="button" tabindex="0" aria-label="${s.t}">
+    <img src="https://i.ytimg.com/vi/${s.id}/hqdefault.jpg" alt="" loading="lazy">
+    <div class="sh-yt"></div>
+    <span class="sh-play" aria-hidden="true">▶</span>
+    <div class="sh-cap"><span class="mono">${s.tag}</span><b>${s.t}</b></div></div>`).join("");
+  row.querySelectorAll(".sh").forEach(card=>{
+    const s=shorts[card.dataset.i], slot=card.querySelector(".sh-yt");
+    const open=()=>openModal({src:"yt",id:s.id,vertical:true});
+    card.addEventListener("click",open); card.addEventListener("keydown",e=>{if(e.key==="Enter")open()});
+    new IntersectionObserver((es,o)=>{ if(!es[0].isIntersecting) return; o.disconnect();
+      slot.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${s.id}?autoplay=1&mute=1&loop=1&playlist=${s.id}&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3" allow="autoplay; encrypted-media" tabindex="-1" title="${s.t}"></iframe>`;
+      const f=slot.firstChild; f.addEventListener("load",()=>setTimeout(()=>card.classList.add("live"),900));
+    },{rootMargin:"200px"}).observe(card);
+  });
+})();
+
+/* ---------- calendly (loads only when scrolled near) ---------- */
+(function(){
+  const fr=document.getElementById("calFrame"); if(!fr||!BOOKING_URL) return;
+  new IntersectionObserver((es,o)=>{ if(!es[0].isIntersecting) return; o.disconnect();
+    fr.innerHTML=`<div class="calendly-inline-widget" data-url="${BOOKING_URL}?hide_gdpr_banner=1&background_color=ffffff&primary_color=111111"></div>`;
+    const sc=document.createElement("script"); sc.src="https://assets.calendly.com/assets/external/widget.js"; sc.async=true; document.body.appendChild(sc);
+  },{rootMargin:"600px"}).observe(fr);
+})();
+
 document.getElementById("reelBtn").addEventListener("click",()=>openModal(projects.find(p=>p.id==="Z30029qzMrI")));
 
 /* =========================================================
