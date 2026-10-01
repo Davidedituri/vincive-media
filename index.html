@@ -326,6 +326,7 @@ body.switching .i18n-fade{opacity:0}
 .phone .scr video{width:100%;height:100%;object-fit:cover}
 .phone .sound{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:4;padding:8px 14px;border-radius:100px;background:rgba(20,20,20,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:12px;font-weight:600;white-space:nowrap}
 </style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="abdc12c1-7bc7-4eb7-ad31-0fcd099ae857" data-domains="vincive-media.com,www.vincive-media.com"></script>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
@@ -780,7 +781,7 @@ cform.addEventListener("submit",async e=>{
         subject:`[${TOPIC_TAG[topic]}] Nieuwe aanvraag van ${name}${company?" ("+company+")":""}`,
         topic:label, name, company, email, phone, budget, message:msg, lang, page:location.pathname})});
       const d0=await r0.json();
-      if(d0.ok){ cform.classList.add("sent"); cform.reset(); return; }
+      if(d0.ok){ trk("Formulier verstuurd",{onderwerp:TOPIC_TAG[topic]}); cform.classList.add("sent"); cform.reset(); return; }
     }catch(_){ /* falls through to FormSubmit, then mailto */ } }
     const r=await fetch("https://formsubmit.co/ajax/"+FORM_TO,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
       body:JSON.stringify({
@@ -791,7 +792,7 @@ cform.addEventListener("submit",async e=>{
       })});
     const d=await r.json().catch(()=>({}));
     if(!r.ok||String(d.success)!=="true") throw new Error(d.message||"send failed");
-    cform.classList.add("sent"); cform.reset();
+    trk("Formulier verstuurd",{onderwerp:TOPIC_TAG[topic]}); cform.classList.add("sent"); cform.reset();
   }catch(err){
     const subj=`[${TOPIC_TAG[topic]}] Aanvraag van ${name}${company?" ("+company+")":""}`;
     const body=`Onderwerp: ${label}\nNaam: ${name}\nBedrijf: ${company||"-"}\nE-mail: ${email}\nTelefoon: ${phone||"-"}\nBudget: ${budget}\n\n${msg}`;
@@ -821,6 +822,7 @@ const lt=document.getElementById("logos");
 
 const modal=document.getElementById("modal"), box=document.getElementById("box");
 function openModal(p){
+  trk("Video bekeken",{video:p.t||p.id});
   if(p.src==="file") box.innerHTML=`<video src="${p.id}" controls autoplay playsinline></video>`;
   else{
     const url = p.src==="yt" ? `https://www.youtube-nocookie.com/embed/${p.id}?autoplay=1&rel=0&modestbranding=1`
@@ -850,7 +852,7 @@ const shorts=[
     <div class="sh-cap"><span class="mono">${s.tag}</span><b>${s.t}</b></div></div>`).join("");
   row.querySelectorAll(".sh").forEach(card=>{
     const s=shorts[card.dataset.i], slot=card.querySelector(".sh-yt");
-    const open=()=>openModal({src:"yt",id:s.id,vertical:true});
+    const open=()=>openModal({src:"yt",id:s.id,vertical:true,t:"Short · "+s.t});
     card.addEventListener("click",open); card.addEventListener("keydown",e=>{if(e.key==="Enter")open()});
     new IntersectionObserver((es,o)=>{ if(!es[0].isIntersecting) return; o.disconnect();
       slot.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${s.id}?autoplay=1&mute=1&loop=1&playlist=${s.id}&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3" allow="autoplay; encrypted-media" tabindex="-1" title="${s.t}"></iframe>`;
@@ -922,6 +924,20 @@ new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)stage.classList.
 document.getElementById("soundBtn").addEventListener("click",()=>openModal({src:"file",id:"feed-full.mp4",vertical:true}));
 
 render();
+</script>
+<script>
+/* ---------- Umami stats (cookieless) ---------- */
+window.trk=(n,d)=>{try{window.umami&&umami.track(n,d)}catch(_){}};
+document.addEventListener("click",e=>{
+  const a=e.target.closest&&e.target.closest("a"); if(!a) return; const h=a.getAttribute("href")||"";
+  if(h.startsWith("tel:")) trk("Telefoon klik");
+  else if(h.startsWith("mailto:")) trk("Mail klik");
+  else if(h.includes("calendly.com")) trk("Calendly klik");
+  else if(h.includes("instagram.com")) trk("Instagram klik");
+  else if(h.includes("linkedin.com")) trk("LinkedIn klik");
+  else if(h.includes("real-estate")) trk("Naar vastgoedpagina");
+},true);
+window.addEventListener("message",e=>{ if(e.origin.includes("calendly.com")&&e.data&&e.data.event==="calendly.event_scheduled") trk("Call geboekt via Calendly"); });
 </script>
 </body>
 </html>
